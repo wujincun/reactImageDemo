@@ -22,28 +22,64 @@ html,body{
   height: 100%;
   overflow: hidden;
   background-color: #ddd;
-}
-.img-figure{
-  position: absolute;
-
-  width :320px;
-  height: 360px;
-  margin: 0;
-  padding: 40px;
-
-  background-color: #fff;
-  box-sizing: border-box;
+  -webkit-perspective:1800px;
+  perspective:1800px;
+  .img-figure{
+    position: absolute;
+    width: 320px;
+    height: 360px;
+    margin: 0;
+    padding: 40px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #fff;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin:0 50% 0;
+    transform-origin:0 50% 0;        
+    transition:left .6s ease-in-out,top .6s ease-in-out,-webkit-transform .6s ease-in-out;
+    transition:transform .6s ease-in-out,left .6s ease-in-out,top .6s ease-in-out;
+    transition:transform .6s ease-in-out,left .6s ease-in-out,top .6s ease-in-out,-webkit-transform .6s ease-in-out;
+    &.is-inverse{
+     -webkit-transform:translate(320px)  rotateY(180deg);
+     transform:translate(320px) rotateY(180deg); 
+   }
+   img{
+    width: 240px;
+    height: 240px;
+  }
 }
 figcaption{
   text-align: center;
+  .img-title{
+    margin: 20px 0 0 0;
+    color: #a7a0a2;
+    font-size: 16px;
+  }
+  .img-back{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    padding: 50px 40px;
+    overflow: auto;
+    color: #a7a0a2;
+    font-size: 22px;
+    line-height: 1.25;
+    text-align: left;
+    background-color: #fff;
+    box-sizing: border-box;
+    transform: rotateY(180deg);
+    backface-visibility:hidden;
+  }
 }
-figcaption .img-title{
-  margin: 20px 0 0 0;
-  color: #a7a0a2;
-  font-size: 16px;
+}
 
 
-}
+
+
 /*image--end*/
 /*controller-start*/
 .controller-nav{
@@ -53,6 +89,28 @@ figcaption .img-title{
   z-index: 101;
   width: 100%;
   text-align: center;
+  .controller-unit{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #aaa;
+    border-radius: 50%;
+    -webkit-transform:scale(0.5);
+    transform:scale(0.5);
+    transition: transform .6s ease-in-out,background-color .3s;
+    &.is-center{
+      background-color: #888;
+      -webkit-transform:scale(1);
+      transform:scale(1)
+    }
+    &.is-inverse{
+      background-color: #555;
+      transform: rotateY(180deg)
+    }
+  }
 }
 /*controller-end*/
 
